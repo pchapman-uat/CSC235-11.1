@@ -25,7 +25,7 @@ class Item:
             reaminMoney = money - self.cost
             # Provide the moeny remaining, and ask for confirmation
             print(f"To buy {self.printItem()}, you will have ${genGreenLine(str(reaminMoney))} left")
-            confirm = input("Please confirm (y/n)")
+            confirm = input("Please confirm (y/n) ")
             # if the user selected "y"
             if(confirm == "y"):
                 # Tell the user they bought the item, and return the remaining money
@@ -108,7 +108,7 @@ while True:
             tool = posibleTools[i]
             print(f"{i}: {tool.printItem()}, ${tool.cost}")
         # Ask the user for the id of the item they want to buy
-        itemNum = intInput("Please enter the id of the item you want to buy")
+        itemNum = intInput("Please enter the id of the item you want to buy ")
         # Get the item data for the selected item
         selectedItem = posibleTools[itemNum]
         # Run the buy item function from the selected item, providing the current money
@@ -124,7 +124,7 @@ while True:
         # Print the users invintory
         printItems()
         #  Ask the the item they want to sell
-        sellChoice = intInputCondition("What item do you want to sell", 2)
+        sellChoice = intInputCondition("What item do you want to sell ", 2)
         # Loop through all items in the invintory
         # TODO: Checlk for incorrect ID
         for i in range(len(invintory)):
@@ -138,7 +138,7 @@ while True:
                 # Remove the item from the list
                 invintory.pop(i-1)
                 # Break out of the for loop
-                input("Press enter to continue")
+                input("Press enter to continue ")
                 break
 
     # If the user selects 2 (Print invintory)
