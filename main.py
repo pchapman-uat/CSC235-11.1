@@ -125,13 +125,8 @@ while True:
 
     # If the user selects 2 (Print invintory)
     elif choice == 2:
-        # Check if there are items in the invintory
-        if len(invintory) > 0:
-            # Print all items
-            printItems()
-        # else print a red line showing that there are no items
-        else:
-            print(genRedLine("You have no items"))
+        # Print all items
+        printItems()
     # If the user selcts 3, break out of the loop ending the program
     elif choice == 3:
         break
