@@ -49,6 +49,8 @@ def printItems():
     shovels = 0
     ropes = 0
     swords = 0
+    if len(invintory) == 0:
+        print("You have no items")
     # For each item in the invintory
     for item in invintory:
         # if the name is the same as the possible tool, update the count
@@ -108,7 +110,6 @@ while True:
     # If the user selects 1 (Selling)
     elif choice == 1:
         # Print the users invintory
-        # TODO: Check if there are no items
         printItems()
         #  Ask the the item they want to sell
         sellChoice = intInput("What item do you want to sell")
