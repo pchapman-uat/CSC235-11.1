@@ -79,7 +79,19 @@ def intInput(text):
     # if failed loop the function
     except:
         print("Please enter a number")
-        intInput(text)
+        # Return the result if looped
+        return intInput(text)
+
+def intInputCondition(text, max, min = 0):
+    value = intInput(text)
+    if value > max:
+        print("Please enter a number greater than or equal to " + str(max))
+        return intInputCondition(text, max)
+    elif value < min:
+        print("Please enter a number less than or equal to " + str(min))
+        return intInputCondition(text, max, min)
+    else:
+        return value
 # Main loop for the aplication
 while True:  
     # Print 3 new lines
@@ -106,21 +118,27 @@ while True:
             # Add the item to the invintory
             invintory.append(selectedItem)
             # Update the current money
-            currentMoney-=remaining
+            currentMoney=remaining
     # If the user selects 1 (Selling)
     elif choice == 1:
         # Print the users invintory
         printItems()
         #  Ask the the item they want to sell
-        sellChoice = intInput("What item do you want to sell")
+        sellChoice = intInputCondition("What item do you want to sell", 2)
         # Loop through all items in the invintory
         # TODO: Checlk for incorrect ID
         for i in range(len(invintory)):
             # If the item name is the same as the possible item name...
             if invintory[i-1].name == posibleTools[sellChoice].name:
+                soldAmmt = invintory[i-1].cost/2
+                # Update the current money
+                currentMoney+=soldAmmt
+                # Print the user sold the item
+                print(f"You sold one {invintory[i-1].printItem()} for ${genGreenLine(str(soldAmmt))} and now have ${genGreenLine(str(currentMoney))}")
                 # Remove the item from the list
                 invintory.pop(i-1)
                 # Break out of the for loop
+                input("Press enter to continue")
                 break
 
     # If the user selects 2 (Print invintory)
